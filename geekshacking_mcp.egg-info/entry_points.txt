@@ -1,2 +1,2 @@
 [console_scripts]
-todo-mcp = todo_mcp:main
+todo_mcp = todo_mcp:main

@@ -5,7 +5,7 @@ from typing import Annotated, NamedTuple
 
 # Create a sample TodoDB instance
 Todo_db = TodoDB()
-Todo_db.sample_data()
+# Todo_db.sample_data()
 
 # Todo class
 class Todo(NamedTuple):

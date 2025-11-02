@@ -1,8 +1,5 @@
 README.md
 pyproject.toml
-./todo_mcp/__init__.py
-./todo_mcp/todo_db.py
-./todo_mcp/todo_mcp.py
 geekshacking_mcp.egg-info/PKG-INFO
 geekshacking_mcp.egg-info/SOURCES.txt
 geekshacking_mcp.egg-info/dependency_links.txt

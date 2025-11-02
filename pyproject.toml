@@ -1,22 +1,74 @@
+# ====================================================================
+# [build-system]
+# BEST PRACTICE: Explicitly define minimum versions and include 'wheel'.
+# ====================================================================
+[build-system]
+requires = [
+    "setuptools>=61.0.0", # Specify minimum version for modern features
+    "wheel",             # Needed for creating universal distribution wheels
+]
+build-backend = "setuptools.build_meta"
+
+# ====================================================================
+# [project]
+# Core metadata and dependencies.
+# ====================================================================
 [project]
 name = "geekshacking-mcp"
 version = "0.1.0"
-description = "Add your description here"
+description = "Model Context Protocol (MCP) server for a collaborative To-Do application."
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-    "fastmcp>=2.13.0.2",
+license = { text = "MIT" } # Always include a license
+authors = [
+    { name = "Your Name", email = "your@email.com" },
 ]
 
+# Ensure fastmcp is required for runtime
+dependencies = [
+    "fastmcp~=2.13", # Tighter constraint, common practice
+    "pydantic>=2.0", # Essential for defining typed tool arguments
+]
+
+# Defines the command line entry point
 [project.scripts]
-todo_mcp = "todo_mcp.todo_mcp:main"
+todo_mcp = "todo_mcp.todo_mcp:main" # Assumes source is in `todo_mcp/todo_mcp.py`
 
-[build-system]
-requires = [ "setuptools" ]
-build-backend = "setuptools.build_meta"
+# Optional dependencies for development/testing
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+    "mypy",
+]
 
-[tool.setuptools]
-package-dir = { "" = "." }
-
+# ====================================================================
+# [tool.setuptools]
+# Package discovery configuration.
+# If your code is in a folder named 'todo_mcp', this finds it.
+# ====================================================================
 [tool.setuptools.packages.find]
 where = [ "." ]
+include = ["todo_mcp*"]
+
+# ====================================================================
+# [tool.ruff]
+# Configuration for the Ruff linter and formatter (Highly Recommended)
+# ====================================================================
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+select = ["E", "F", "B", "I"] # Basic rule set (Errors, Flakes, Bugbear, Imports)
+exclude = [
+    ".git",
+    "__pycache__",
+    "venv",
+]
+
+# ====================================================================
+# [tool.mypy]
+# Configuration for the Mypy type checker (Highly Recommended)
+# ====================================================================
+[tool.mypy]
+ignore_missing_imports = true
+strict = true

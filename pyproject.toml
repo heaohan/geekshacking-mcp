@@ -20,4 +20,3 @@ package-dir = { "" = "." }
 
 [tool.setuptools.packages.find]
 where = [ "." ]
-

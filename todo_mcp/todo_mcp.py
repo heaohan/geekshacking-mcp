@@ -1,6 +1,6 @@
 # import libraries
 from fastmcp import FastMCP
-from .todo_db import TodoDB
+from todo_db import TodoDB
 from typing import Annotated, NamedTuple
 
 # Create a sample TodoDB instance
